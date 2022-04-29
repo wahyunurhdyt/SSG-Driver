@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="title"
+            type="String" />
+        <variable
+            name="onNavigationBackClick"
+            type="android.view.View.OnClickListener"/>
+    </data>
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:contentInsetLeft="0dp"
+        android:contentInsetStart="0dp"
+        android:contentInsetRight="0dp"
+        android:contentInsetEnd="0dp"
+        android:background="@color/white"
+        app:title="@{title, default=Title}"
+        app:titleTextColor="@color/black_70"
+        android:textSize="16sp"
+        app:contentInsetLeft="0dp"
+        app:contentInsetStart="0dp"
+        app:contentInsetRight="0dp"
+        app:contentInsetEnd="0dp"
+        app:navigationOnClickListener="@{onNavigationBackClick}"
+        app:navigationIcon="@drawable/ic_arrow_back">
+
+
+
+    </androidx.appcompat.widget.Toolbar>
+
+</layout>

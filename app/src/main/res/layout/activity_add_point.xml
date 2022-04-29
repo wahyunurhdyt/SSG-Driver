@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.route.addpoint.ActivityAddPoint">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="id.semisamadriver.app.ui.route.addpoint.ViewModelAddPoint" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/include"
+            app:title="@{viewModel.title}"
+            app:onNavigationBackClick="@{viewModel.onClickedUpButton}"
+            layout="@layout/toolbar" />
+
+        <id.semisamadriver.app.utilily.CustomMapView
+            android:id="@+id/mvMain"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@color/white_700"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/include" />
+
+        <ImageView
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:src="@drawable/ic_marker"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/mvMain"
+            app:layout_constraintTop_toBottomOf="@+id/include"
+            tools:ignore="ContentDescription" />
+
+        <Button
+            android:id="@+id/btnAddPoint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:text="@string/labelAddPoint"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:layout_margin="32dp"
+            android:enabled="@{viewModel.buttonEnabled}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+
+                <include
+                    layout="@layout/dialog_loading"
+                    app:visibility="@{viewModel.loadingVisibility}"/>
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
+

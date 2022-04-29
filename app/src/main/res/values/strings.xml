@@ -1,0 +1,233 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="apps_name">Driver Application for Semi Sama Green</string>
+    <string name="labelPressOneMore">Tekan sekali lagi untuk keluar</string>
+
+    <!-- Navigation -->
+    <string name="labelHome">Home</string>
+    <string name="labelProfile">Profile</string>
+
+    <!-- Label Button -->
+    <string name="labelNext">Selanjutnya</string>
+
+    <!-- Label Auth -->
+    <string name="labelLogin">Login</string>
+    <string name="labelLoginDescription">Selamat datang di Semi Sama Green, kami adalah platform yang dibuat agar mempermudah distribusi  sayur-sayuran dari penjual ke konsumen.</string>
+    <string name="labelName">Nama Anda</string>
+    <string name="labelPhone">Nomor Telephone</string>
+    <string name="labelEmail">Email</string>
+    <string name="labelPassword">Password</string>
+    <string name="labelPasswordConfirmation">Konfirmasi Password</string>
+    <string name="labelHintName">Tulis nama anda disini…</string>
+    <string name="labelHintPhone">Tulis nomor telephone anda disini…</string>
+    <string name="labelHintEmail">Tulis email anda disini…</string>
+    <string name="labelHintPassword">Tulis password anda disini…</string>
+    <string name="labelRegister">Daftar</string>
+    <string name="labelForgotPassword">Lupa Kata Sandi?</string>
+    <string name="labelLoginOption">Atau masuk dengan</string>
+    <string name="labelLoginGoogle">Login with Google Account</string>
+    <string name="labelTryApp">Ingin mencoba aplikasi? Masuk sebagai tamu</string>
+    <string name="labelLoginAsGuest">Masuk sebagai tamu</string>
+    <string name="labelTermPrivacy">Saya telah menyetujui Syarat &amp; Ketentuan dan Kebijakan Privasi SSG</string>
+    <string name="labelTemrCondition">Syarat &amp; Ketentuan</string>
+    <string name="labelPrivacyPolicy">Kebijakan Privasi SSG</string>
+    <string name="labelTitleRegister">Daftar Akun</string>
+    <string name="labelDescRegister">Bergabunglah dengan kami, agar anda dapat menikmati adanya kemudahan dalam berbelanja sayur-sayuran dari smartphone</string>
+
+    <!-- Verification -->
+    <string name="labelVerification">Verifikasi Email</string>
+    <string name="labelInputCodeVerification">Masukan Kode Verifikasi</string>
+    <string name="labelSendToEmail">Kami telah mengirimkan 6 digit kode verifikasi ke Alamat email</string>
+    <string name="labelCheckEmail">Cek email anda untuk mendapatkan kode verifikasi tersebut (Silahkan cek juga folder spam jika tidak menemukannya di primary email).</string>
+    <string name="labelCodeExpiresIn">Kode verifikasi akan hangus dalam</string>
+    <string name="labelDidntGetEmail">Tidak mendapatkan email? Kirim Ulang Kode</string>
+    <string name="labelResendCode">Kirim Ulang Kode</string>
+    <string name="labelNextVerified">Lanjutkan</string>
+    <string name="labelSecond">detik</string>
+
+    <!--Home-->
+    <string name="labelSearch">Search</string>
+    <string name="labelKurirFromSemiSama">Rute Keliling Anda</string>
+    <string name="labelMapsDesc">Maps diatas menampilkan peta tujuan dari kurir Semi Sama Green. Anda dapat mengelola rute anda ataupun mulai keliling.</string>
+    <string name="labelManage">Kelola</string>
+    <string name="labelStartDriving">Mulai Keliling</string>
+    <string name="labelStopDriving">Stop Keliling</string>
+    <string name="labelProductCategory">Product Category</string>
+    <string name="labelSsgChoiceProduct">Produk Pilihan SSG</string>
+    <string name="labelRecommendProduct">Produk Rekomendasi</string>
+    <string name="labelSeeAll">Lihat Semua</string>
+    <string name="labelChangeLocation">- Ganti Lokasi</string>
+
+    <!-- Dialog Confirm Driving Mode -->
+    <string name="labelTitleStart">Apakah anda yakin memulai keliling anda?</string>
+    <string name="labelTitleStop">Apakah anda yakin menghentikan keliling anda?</string>
+    <string name="labelDesc1Start">Kami ingin mengonfirmasi ulang kepada anda, apakah anda akan melakukan keliling pada rute yang sudah ditentukan?</string>
+    <string name="labelDesc1Stop">Kami ingin mengonfirmasi ulang kepada anda, apakah anda akan menghentikan kegiatan keliling anda?</string>
+    <string name="labelDesc2Start">Jika iya tekan tombol confirm untuk memulai keliling anda.</string>
+    <string name="labelDesc2Stop">Jika iya tekan tombol berhenti untuk memberhentikan kegiatan keliling anda.</string>
+    <string name="labelButtonStart">Konfirmasi</string>
+    <string name="labelButtonStop">Berhenti</string>
+
+    <!-- Profile -->
+    <string name="labelActionRequired">Action Required</string>
+    <string name="labelLogout">Keluar Akun</string>
+    <string name="labelCoordinate">Koordinat (%1$s, %2$s)</string>
+    <string name="labelFailedLoadingLocation">Lokasi tidak ditemukan</string>
+
+    <!-- Search -->
+    <string name="labelEmptySearch">Tidak mendapatkan hasil dari kata kunci yang anda tulis.</string>
+    <string name="labelSearchKeyword">Silahkan masukan kata kunci yang ingin dicari.</string>
+
+
+    <!-- Detail Product -->
+    <string name="labelTitleDetailProduct">Deskripsi Produk</string>
+    <string name="labelDescription">Deskripsi :</string>
+    <string name="labelNutrition">Nutrisi dan Benefit :</string>
+    <string name="labelStorageMethod">Cara Penyimpanan :</string>
+    <string name="labelProductRecommendations">Produk Terkait</string>
+
+
+    <!-- Manage Route -->
+    <string name="labelSeeRoute">Lihat Rute</string>
+    <string name="labelManageRoute">Kelola Rute</string>
+    <string name="labelYourRoute">Rute Terpilih :</string>
+    <string name="labelAddPoint">Tambah Point</string>
+    <string name="labelDescManageRoute1">Anda mendapatkan route keliling di daerah</string>
+    <string name="labelDescManageRoute2">. Anda dapat menambah, mengurangi koordinat terpilih pada tombol Kelola dibawah.</string>
+
+
+    <!-- Exception. -->
+    <string name="labelCantConnectToInternet">Perangkat tidak terhubung ke internet</string>
+    <string name="labelFailedToConnectToServer">Gagal terhubung ke server</string>
+    <string name="labelServerDown">Mohon maaf, server sedang bermasalah, silahkan coba beberapa saat lagi</string>
+    <string name="labelErrorString">Error: %1s</string>
+    <string name="labelTokenInvalid">Akses tidak valid, silahkan login ulang</string>
+    <string name="labelErrorConnection">No Connection</string>
+    <string name="labelErrorConnectionDesc">Looks like you lost connection</string>
+    <string name="labelRefresh">Reload</string>
+
+    <!-- Base. -->
+    <string name="labelLocationPermission">Hidupkan izin lokasi</string>
+    <string name="labelLocationPermissionCaption">Akses lokasi dibutuhkan, mohon nyalakan terlebih dahulu, jika tidak akan ada fitur yang tidak dapat berjalan dengan baik.</string>
+    <string name="labelTurnOn">Hidupkan</string>
+    <string name="labelCancel">Batal</string>
+    <string name="labelNeedCameraAccess">Aplikasi butuh akses kamera dan penyimpanan agar dapat mengambil gambar</string>
+    <string name="labelFailedCreatingImage">Foto tidak dapat dibuat, silahkan coba lagi</string>
+    <string name="labelAlertDialogError">Gagal menampilkan pesan</string>
+
+    <!-- Dialog -->
+    <string name="labelLoading">Mohon Tunggu…</string>
+    <string name="labelCheckLocationAvailable">Tunggu sejenak, kami mencoba mengecek ketersediaan produk kami di lokasi anda</string>
+    <string name="labelThanksForWaiting">Terima kasih sudah menunggu!</string>
+    <string name="labelYourLocation">Lokasi Anda</string>
+    <string name="labelChangeLocationDialog">Ubah Lokasi</string>
+    <string name="labelHintSelectLocation">Pilih Lokasi…</string>
+    <string-array name="labelInfoAvailabelLocation">
+        <item>Kami ingin mengabarkan kabar baik bahwa lokasi anda sudah bisa mendapatkan akses pelayanan</item>
+        <item>Silahkan nikmati pelayanan dari kami, dan milikilah trend hidup sehat dari aplikasi ini.</item>
+    </string-array>
+    <string-array name="labelInfoUnavailabelLocation">
+        <item>Kami ingin mengabarkan kabar bahwa lokasi anda sudah belum mendapatkan akses pelayanan</item>
+        <item>Silahkan pilih area yang kami support dengan memilih lokasi terdekat dari anda.</item>
+    </string-array>
+
+
+    <!-- Boarding -->
+    <string-array name="labelBoarding1">
+        <item>Belanja super mudah dengan beragam cara pembayaran</item>
+        <item>Lakukan pembelian sayur-sayuran dengan mudah dari smartphone anda dengan beragam cara pembayaran.</item>
+    </string-array>
+    <string-array name="labelBoarding2">
+        <item>Pengiriman dilakukan dengan mengurangi kontak fisik</item>
+        <item>Kami membantu untuk mengurangi adanya kontak fisik, sesuai anjuran pemerintah agar menghindari tertularnya virus Covid-19.</item>
+    </string-array>
+    <string-array name="labelBoarding3">
+        <item>Menyediakan bahan makanan terbaik untuk keluarga anda</item>
+        <item>Bahan makanan yang dijual merupakan yang terpilih, agar mendapatkan yang terbaik sebelum kami berikan kepada anda.</item>
+    </string-array>
+
+    <!-- Profile Menu -->
+    <string-array name="labelProfileMenu">
+        <item>Buat Password</item>
+        <item>Ubah Password</item>
+        <item>Verifikasi Email</item>
+        <item>Alamat Pengiriman</item>
+    </string-array>
+
+    <string-array name="labelPassword">
+        <item>Buat Password</item>
+        <item>Ubah Password</item>
+        <item>Lupa Kata Sandi</item>
+        <item>Reset Password</item>
+        <item>Pemulihan Akun</item>
+    </string-array>
+
+    <!-- Activity Password -->
+    <string-array name="labelDescPassword">
+        <item>Dikarenakan anda login melalui email, anda perlu memasukan password untuk akun Semi Sama Green Anda. Isikan password baru anda dibawah ini.</item>
+        <item>Anda dapat merubah password pada akun Semi Sama Green anda. Isikan password lama anda dan tulis password baru yang anda inginkan.</item>
+        <item>Kami akan membantu untuk memulihkan kembali akun anda dengan menuliskan email yang terdaftar pada akun anda. Nantinya kami akan mengirimkan kode verifikasi sebagai token untuk mereset password anda.</item>
+        <item>Terima kasih sudah melakukan reset password, silahkan tulis ulang dan ingat password anda.</item>
+    </string-array>
+    <string name="labelConfirm">Konfirmasi</string>
+    <string name="labelOldPassword">Password Lama</string>
+    <string name="labelNewPassword">Password Baru</string>
+    <string name="labelNewPasswordConfirmation">Konfirmasi Password Baru</string>
+    <string name="labelSuccessCreatePassword">Berhasil membuat password</string>
+    <string name="labelSuccessEditPassword">Berhasil mengubah password</string>
+
+    <!-- Activity Edit -->
+    <string name="labelTitleEdit">Profile Settings</string>
+    <string name="labelSaveChanges">Save Changes</string>
+    <string name="labelSuccessChangePicture">Berhasil mengganti foto</string>
+    <string name="labelSuccessChangeEditData">Berhasil mengganti profil</string>
+
+    <!-- Bottom Sheet -->
+    <string name="labelOpenGallery">Buka Dari Gallery</string>
+    <string name="labelOpenCamera">Ambil Dari Camera</string>
+
+    <!-- Dialog -->
+    <string name="labelLogoutAccount">Keluar</string>
+    <string name="labelDescLogoutAccount">Yakin kamu ingin keluar akun?</string>
+
+    <!-- Toast And Validator  -->
+    <string name="labelExpiresSesion">"Sesi anda telah habis"</string>
+    <string name="labelEmailError">Format Email Salah</string>
+    <string name="labelNameError">Nama tidak boleh kosong</string>
+    <string-array name="labelPhoneError">
+        <item>Nomor HP tidak valid</item>
+        <item>Nomor terlalu pendek, minimal 10 karakter</item>
+    </string-array>
+    <string-array name="labelPasswordError">
+        <item>Password harus mengandung huruf dan angka</item>
+        <item>Password minimal 8 karakter</item>
+        <item>Password tidak sama</item>
+    </string-array>
+    <string name="labelTryToManyRequest">Permintaan melebihi batas, silahkan coba lagi besok</string>
+    <string name="labelWaitAMinute">Tunggu Beberapa Saat</string>
+    <string name="labelSuccessLogout">Berhasil Logout</string>
+    <string name="labelPictureHasTaken">Picture has taken</string>
+    <string-array name="labelForgotPassword">
+        <item>Silahkan cek tautan di email anda yang kami kirimkan untuk reset password</item>
+        <item>Permintaan melebihi batas, mohon coba lagi besok</item>
+    </string-array>
+    <string-array name="labelResetPassword">
+        <item>Berhasil reset password, silahkan login</item>
+        <item>Sesi sudah habis, coba lagi nanti</item>
+        <item>Permintaan melebihi batas, mohon coba lagi dalam 15 menit</item>
+    </string-array>
+    <string name="title_activity_login">ActivityLogin</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="labelRouteNotReady">Rute Belum Tersedia.</string>
+    <string name="labelChooseImage">Pilih Gambar</string>
+    <string-array name="labelChooseImages">
+        <item>Galeri</item>
+        <item>Ambil Gambar</item>
+    </string-array>
+</resources>
