@@ -350,15 +350,16 @@ class FragmentHome : BaseFragment(), OnMapReadyCallback, ViewModelHome.Bridge {
             Application.getContext(),
             R.drawable.driver
         )) as BitmapDrawable).bitmap
-        val markerIcon = Bitmap.createScaledBitmap(driverMarker, 96, 96, false)
+        val driverIcon = Bitmap.createScaledBitmap(driverMarker, 96, 96, false)
         map?.addMarker(
             MarkerOptions()
-                .icon(BitmapDescriptorFactory.fromBitmap(markerIcon))
+                .icon(BitmapDescriptorFactory.fromBitmap(driverIcon))
                 .position(driverLocation)
                 .title("Lokasi Anda")
         )
 
         val builder = LatLngBounds.Builder()
+        builder.include(driverLocation)
 
         val size = data.size
         val bitmap = ((ContextCompat.getDrawable(
@@ -386,7 +387,7 @@ class FragmentHome : BaseFragment(), OnMapReadyCallback, ViewModelHome.Bridge {
                 MarkerOptions()
                     .icon(BitmapDescriptorFactory.fromBitmap(markerIcon))
                     .position(position)
-                    .snippet(i.toString())
+                    .snippet((i+1).toString())
                     .title(name)
             )
         }
