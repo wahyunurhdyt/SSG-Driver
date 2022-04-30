@@ -19,7 +19,7 @@ class Adapter<T>(var layout: Int,
     private var recyclerView: RecyclerView? = null
     var data = this.items
         set(value) {
-            field = value
+            field = value.filterNotNull().toMutableList()
             notifyDataSetChanged()
         }
 

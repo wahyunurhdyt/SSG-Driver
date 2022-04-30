@@ -186,6 +186,9 @@ class FragmentHome : BaseFragment(), OnMapReadyCallback, ViewModelHome.Bridge {
                     loadRoute(viewModel.routes.value!!.data, it)
                 }
             })
+            routes.observe(owner, {
+                loadRoute(it.data, viewModel.driverLocation.value!!)
+            })
             user.observe(owner, {
                 if (it.isDrivingMode!!){
                     if(!isMyServiceRunning(SocketServices::class.java)){

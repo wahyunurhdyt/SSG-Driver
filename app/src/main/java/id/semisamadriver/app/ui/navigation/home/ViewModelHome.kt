@@ -24,7 +24,7 @@ class ViewModelHome(
     val user = MutableLiveData<User>()
     val categories = MutableLiveData<MutableList<Category>>()
     val routes = MutableLiveData<ResponseRoute>()
-    val driverLocation = MutableLiveData<LatLng>()
+    val driverLocation = MutableLiveData(LatLng(0.0,0.0))
     val product = MutableLiveData<ResponseProducts>()
     val productRecommend = MutableLiveData<ResponseProducts>()
     val loadingVisibility = MutableLiveData(View.VISIBLE)
@@ -79,6 +79,9 @@ class ViewModelHome(
                 bridge?.showSnackbar(e.message)
             } catch (e: ConnectionException) {
             }
+            finally {
+                loadingVisibility.postValue(View.GONE)
+            }
         }
     }
 
@@ -97,6 +100,9 @@ class ViewModelHome(
             } catch (e: ApiException) {
                 bridge?.showSnackbar(e.message)
             } catch (e: ConnectionException) {
+            }
+            finally {
+                loadingVisibility.postValue(View.GONE)
             }
         }
     }
@@ -119,6 +125,9 @@ class ViewModelHome(
             } catch (e: ConnectionException) {
                 bridge?.showSnackbarLong(e.message)
             }
+            finally {
+                loadingVisibility.postValue(View.GONE)
+            }
         }
     }
 
@@ -140,6 +149,9 @@ class ViewModelHome(
             } catch (e: ConnectionException) {
                 bridge?.showSnackbarLong(e.message)
             }
+            finally {
+                loadingVisibility.postValue(View.GONE)
+            }
         }
     }
 
@@ -152,6 +164,9 @@ class ViewModelHome(
                 bridge?.showSnackbar(e.message)
             } catch (e: ConnectionException) {
                 bridge?.showSnackbarLong(e.message)
+            }
+            finally {
+                loadingVisibility.postValue(View.GONE)
             }
         }
     }
@@ -166,6 +181,9 @@ class ViewModelHome(
                 bridge?.showSnackbar(e.message)
             } catch (e: ConnectionException) {
                 bridge?.showSnackbarLong(e.message)
+            }
+            finally {
+                loadingVisibility.postValue(View.GONE)
             }
         }
     }
