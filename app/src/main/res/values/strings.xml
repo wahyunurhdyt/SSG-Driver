@@ -188,6 +188,7 @@
     <!-- Dialog -->
     <string name="labelLogoutAccount">Keluar</string>
     <string name="labelDescLogoutAccount">Yakin kamu ingin keluar akun?</string>
+    <string name="failedProcessingImage">Gagal memproses gambar, harap coba lagi nanti</string>
 
     <!-- Toast And Validator  -->
     <string name="labelExpiresSesion">"Sesi anda telah habis"</string>

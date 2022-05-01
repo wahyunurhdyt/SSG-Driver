@@ -22,13 +22,13 @@ class ImagePickerDialog(private val context: Context) {
             }
         }.show()
     }
-    private var bridge: Bridge? = null
+    private var bridge: Listener? = null
 
-    fun setBridge(bridge: Bridge) {
+    fun setListener(bridge: Listener) {
         this.bridge = bridge
     }
 
-    interface Bridge {
+    interface Listener {
         fun selectedCaptureMode(selected: String)
     }
 

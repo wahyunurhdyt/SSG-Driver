@@ -1,26 +1,24 @@
 package id.semisamadriver.app.ui.person.edit
+
 import android.app.Activity
-import android.content.Intent
-import android.graphics.BitmapFactory
+import android.net.Uri
 import android.os.Bundle
-import android.provider.MediaStore
-import android.widget.TextView
+import androidx.activity.result.ActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import com.github.dhaval2404.imagepicker.ImagePicker
 import id.semisamadriver.app.R
 import id.semisamadriver.app.api.data.DataAuth
 import id.semisamadriver.app.base.BaseActivity
 import id.semisamadriver.app.databinding.ActivityEditBinding
 import id.semisamadriver.app.ui.ViewModelFactoryEdit
 import id.semisamadriver.app.utilily.*
-import id.semisamadriver.app.utilily.Constant.REQUEST_CAPTURE_PHOTO
-import id.semisamadriver.app.utilily.Constant.REQUEST_GALLERY_PHOTO
 import id.semisamadriver.app.utilily.Constant.authTemps
 import id.semisamadriver.app.utilily.Constant.baseUrlImageUser
 import id.semisamadriver.app.utilily.Constant.getInitialName
 import org.kodein.di.generic.instance
 import pub.devrel.easypermissions.EasyPermissions
-import java.io.IOException
 
 class ActivityEdit : BaseActivity(), ViewModelEdit.Bridge,
     EasyPermissions.PermissionCallbacks {
@@ -29,10 +27,32 @@ class ActivityEdit : BaseActivity(), ViewModelEdit.Bridge,
     private lateinit var viewModel: ViewModelEdit
     private val factory: ViewModelFactoryEdit by instance()
 
-    private var lastRequestCapture = 0
-    private var lastRequestGalery = 0
-    private var requestId = 0
-    private var path = ""
+    private val startForProfileImageResult = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) { result: ActivityResult ->
+        val resultCode = result.resultCode
+        val data = result.data
+
+        when (resultCode) {
+            Activity.RESULT_OK -> {
+                data?.data?.let {
+                    setImageUri(it)
+                } ?: run {
+                    toast(getString(R.string.failedProcessingImage))
+                }
+            }
+            ImagePicker.RESULT_ERROR -> {
+                toast(ImagePicker.getError(data))
+            }
+        }
+    }
+
+    private fun setImageUri(imageUri: Uri?) {
+        imageUri?.let { image ->
+            val base64 = encodeUriToBase64(image)
+            viewModel.uploadUserImage(base64)
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,35 +64,35 @@ class ActivityEdit : BaseActivity(), ViewModelEdit.Bridge,
 
     private fun initBinding() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_edit)
-        viewModel = ViewModelProvider(this, factory).get(ViewModelEdit::class.java)
+        viewModel = ViewModelProvider(this, factory)[ViewModelEdit::class.java]
         viewModel.setBridge(this)
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
     }
 
-    private fun initObserver(){
+    private fun initObserver() {
         val owner = this
         viewModel.apply {
-            user.observe(owner, {
+            user.observe(owner) {
                 val token = tempAuth?.tokens
                 cache.set(authTemps, DataAuth(it, token))
-                if (it.image == null){
+                if (it.image == null) {
                     textInitial.postValue(getInitialName())
-                }else {
+                } else {
                     textInitial.value = ""
                     binding.ivProfilePic.loadImageFromLink(baseUrlImageUser + tempAuth?.user?.image)
                 }
-            })
+            }
         }
-        viewModel.name.observe(this, {
+        viewModel.name.observe(this) {
             viewModel.checkButton()
-        })
-        viewModel.email.observe(this, {
+        }
+        viewModel.email.observe(this) {
             viewModel.checkButton()
-        })
-        viewModel.phone.observe(this, {
+        }
+        viewModel.phone.observe(this) {
             viewModel.checkButton()
-        })
+        }
     }
 
     private fun initView(){
@@ -89,23 +109,32 @@ class ActivityEdit : BaseActivity(), ViewModelEdit.Bridge,
     }
 
     override fun changePicture() {
-        showBottomSheetDialog(this, R.layout.sheet_pickimage){ dialog ->
-            val openGallery = dialog.findViewById<TextView>(R.id.openGallery)
-            val openCamera = dialog.findViewById<TextView>(R.id.openCamera)
-
-            openGallery?.setOnClickListener {
-                dialog.dismiss()
-                lastRequestGalery = REQUEST_GALLERY_PHOTO
-                openGalleryCamera(REQUEST_GALLERY_PHOTO)
-            }
-
-            openCamera?.setOnClickListener {
-                dialog.dismiss()
-                lastRequestCapture = REQUEST_CAPTURE_PHOTO
-                path = openIntentCamera(REQUEST_CAPTURE_PHOTO)
-            }
-
-        }
+        ImagePickerDialog(this).apply {
+            setListener(object: ImagePickerDialog.Listener {
+                override fun selectedCaptureMode(selected: String) {
+                    when (selected) {
+                        ImagePickerDialog.SELECT_GALLERY -> {
+                            ImagePicker.with(this@ActivityEdit)
+                                .cropSquare()
+                                .compress(1024)
+                                .galleryOnly()
+                                .createIntent { intent ->
+                                    startForProfileImageResult.launch(intent)
+                                }
+                        }
+                        ImagePickerDialog.SELECT_CAPTURE -> {
+                            ImagePicker.with(this@ActivityEdit)
+                                .cropSquare()
+                                .compress(1024)
+                                .cameraOnly()
+                                .createIntent { intent ->
+                                    startForProfileImageResult.launch(intent)
+                                }
+                        }
+                    }
+                }
+            })
+        }.show()
     }
 
     override fun showSnackbar(message: String?) {
@@ -114,33 +143,5 @@ class ActivityEdit : BaseActivity(), ViewModelEdit.Bridge,
 
     override fun showSnackbarLong(message: String?) {
         binding.container.snackbarLong(message)
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == REQUEST_CAPTURE_PHOTO && resultCode == Activity.RESULT_OK) {
-            toast("${getString(R.string.labelPictureHasTaken)} : $path")
-            try {
-                viewModel.patchImage(encodePathToBase64(path))
-            }catch (e: IOException){
-                e.printStackTrace()
-            }
-        }
-
-        if (requestCode == REQUEST_GALLERY_PHOTO && resultCode == Activity.RESULT_OK) {
-            val dataImage = data!!.data
-            try {
-                viewModel.patchImage(encodeUriToBase64(dataImage!!)!!)
-            }catch (e: IOException){
-                e.printStackTrace()
-            }
-        }
-    }
-
-    override fun onPermissionsDenied(requestCode: Int, perms: MutableList<String>) { }
-
-    override fun onPermissionsGranted(requestCode: Int, perms: MutableList<String>) {
-        if (requestId == REQUEST_CAPTURE_PHOTO) path = openIntentCamera(lastRequestCapture)
-        else openGalleryCamera(lastRequestGalery)
     }
 }

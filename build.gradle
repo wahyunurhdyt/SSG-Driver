@@ -2,21 +2,16 @@
 buildscript {
     ext.kotlin_version = '1.6.20-RC'
     repositories {
-        mavenCentral()
         google()
-        maven {
-            url 'https://maven.google.com'
-        }
-        maven{
-            url 'https://maven.fabric.io/public'
-        }
+        mavenCentral()
+        maven { url "https://www.jitpack.io" }
     }
 
     dependencies {
         classpath "com.android.tools.build:gradle:7.0.4"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.10"
 
-        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:2.5.0-alpha03"
+        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:2.5.0-beta01"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files

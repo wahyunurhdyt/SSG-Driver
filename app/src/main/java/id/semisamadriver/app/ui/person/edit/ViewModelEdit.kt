@@ -3,6 +3,7 @@ package id.semisamadriver.app.ui.person.edit
 import android.view.View
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import id.semisamadriver.app.R
 import id.semisamadriver.app.api.data.User
 import id.semisamadriver.app.api.manager.ManagerRepository
@@ -12,6 +13,7 @@ import id.semisamadriver.app.base.Application
 import id.semisamadriver.app.utilily.Coroutines
 import id.semisamadriver.app.utilily.isValidPhoneNumber
 import id.semisamadriver.app.utilily.tempAuth
+import kotlinx.coroutines.launch
 
 class ViewModelEdit(
     private val managerRepository: ManagerRepository
@@ -36,10 +38,28 @@ class ViewModelEdit(
     private val limitLength = MutableLiveData(10)
     val maxLength = MutableLiveData(14)
 
-
     private var isLoading = false
     val isButtonEnabled = MutableLiveData(false)
     val loadingVisibility = MutableLiveData(View.GONE)
+
+    fun uploadUserImage(image: String?) {
+        isLoading = true
+        loadingVisibility.postValue(View.VISIBLE)
+        viewModelScope.launch {
+            try {
+                managerRepository.repositoryPerson.patchImage(image)
+                user.postValue(managerRepository.repositoryPerson.getUser()?.data)
+                bridge?.showSnackbar(Application.getString(R.string.labelSuccessChangePicture))
+            } catch (e: ApiException) {
+                bridge?.showSnackbar(e.message)
+            } catch (e: ConnectionException) {
+                bridge?.showSnackbarLong(e.message)
+            } finally {
+                isLoading = false
+                loadingVisibility.postValue(View.GONE)
+            }
+        }
+    }
 
     fun checkButton() {
         val nameOk = isNameOk()
@@ -161,25 +181,6 @@ class ViewModelEdit(
 
     val onClickChangePicture = View.OnClickListener{
         bridge?.changePicture()
-    }
-
-    fun patchImage(image: String){
-        isLoading = true
-        loadingVisibility.postValue(View.VISIBLE)
-        Coroutines.main {
-            try {
-                managerRepository.repositoryPerson.patchImage(image)
-                user.postValue(managerRepository.repositoryPerson.getUser()?.data)
-                bridge?.showSnackbar(Application.getString(R.string.labelSuccessChangePicture))
-            } catch (e: ApiException) {
-                bridge?.showSnackbar(e.message)
-            } catch (e: ConnectionException) {
-                bridge?.showSnackbarLong(e.message)
-            } finally {
-                isLoading = false
-                loadingVisibility.postValue(View.GONE)
-            }
-        }
     }
 
     interface Bridge {

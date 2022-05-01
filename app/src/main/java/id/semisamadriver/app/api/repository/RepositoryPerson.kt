@@ -27,7 +27,7 @@ class RepositoryPerson(
         return apiRequest { managerNetwork.servicePerson.changePassword(req) }
     }
 
-    suspend fun patchImage(image: String): Unit? {
+    suspend fun patchImage(image: String?): Unit? {
         if (!isTokenOk()) return null
         val req = RequestPatch(null, null, null, image)
         return apiRequest { managerNetwork.servicePerson.patchImage(req) }

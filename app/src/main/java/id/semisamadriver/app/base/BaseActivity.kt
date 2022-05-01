@@ -7,15 +7,12 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
-import android.provider.MediaStore
 import android.provider.Settings
 import android.util.Base64
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.FileProvider
 import id.semisamadriver.app.R
 import id.semisamadriver.app.api.repository.RepositoryLocation
 import id.semisamadriver.app.utilily.Cache
-import id.semisamadriver.app.utilily.createFile
 import id.semisamadriver.app.utilily.showSimpleDialogReturn
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.kodein
@@ -33,7 +30,6 @@ abstract class BaseActivity: AppCompatActivity(), KodeinAware,
 
     companion object {
         const val REQUEST_PERMISSIONS_LOCATION = 345
-        const val REQUEST_PERMISSIONS_CAMERA = 493
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -94,61 +90,6 @@ abstract class BaseActivity: AppCompatActivity(), KodeinAware,
                     .build()
             )
             false
-        }
-    }
-
-    private fun checkCameraPermissions(
-        rationale: String
-    ): Boolean {
-        var hasPermissions = false
-        val perms = arrayOf(
-            Manifest.permission.CAMERA,
-            Manifest.permission.WRITE_EXTERNAL_STORAGE,
-            Manifest.permission.READ_EXTERNAL_STORAGE
-        )
-        if (EasyPermissions.hasPermissions(this, *perms)) {
-            hasPermissions = true
-        } else {
-            EasyPermissions.requestPermissions(
-                this,
-                rationale,
-                REQUEST_PERMISSIONS_CAMERA,
-                *perms
-            )
-        }
-
-        return hasPermissions
-    }
-
-    protected fun openIntentCamera(request: Int): String {
-        var path: String? = null
-        if (checkCameraPermissions(getString(R.string.labelNeedCameraAccess))) {
-            val cameraIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-            cameraIntent.putExtra(MediaStore.EXTRA_FINISH_ON_COMPLETION, true)
-            if (cameraIntent.resolveActivity(packageManager) != null) {
-                val pictureFile = createFile()
-                path = pictureFile?.absolutePath ?: ""
-                if (pictureFile != null) {
-                    val photoURI = FileProvider.getUriForFile(
-                        this,
-                        getString(R.string.file_authority_provider),
-                        pictureFile
-                    )
-                    cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI)
-                    startActivityForResult(cameraIntent, request)
-                }
-            }
-        }
-
-        return path ?: ""
-    }
-
-    protected fun openGalleryCamera(request: Int) {
-        if (checkCameraPermissions(getString(R.string.labelNeedCameraAccess))) {
-            val intent = Intent(Intent.ACTION_PICK)
-            intent.type = "image/*"
-            intent.putExtra(Intent.EXTRA_MIME_TYPES, arrayOf("image/jpeg", "image/png"))
-            startActivityForResult(intent, request)
         }
     }
 
