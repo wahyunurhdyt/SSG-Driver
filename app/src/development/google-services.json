@@ -1,0 +1,191 @@
+{
+  "project_info": {
+    "project_number": "274489186492",
+    "firebase_url": "https://semi-sama-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "semi-sama",
+    "storage_bucket": "semi-sama.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:274489186492:android:659b0e45caa28285c218b9",
+        "android_client_info": {
+          "package_name": "id.semisama.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "274489186492-7hl9lrfi56tler9lr8qsp29fuf16oqud.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "id.semisama.app",
+            "certificate_hash": "744c633e17ec8d588e2c01573b2b2797874a092d"
+          }
+        },
+        {
+          "client_id": "274489186492-g50i5phma5bnsmlncfr3crukllrd8ujo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "id.semisama.app",
+            "certificate_hash": "0aefce1fd02c9d04a9ea16a1e1e8d85307992887"
+          }
+        },
+        {
+          "client_id": "274489186492-getu9psdnk2l3minnbl2gqcf60kbajt1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "id.semisama.app",
+            "certificate_hash": "9bcc0db963dbb8bf2387d72c902a794357c13363"
+          }
+        },
+        {
+          "client_id": "274489186492-orru034g2ai5uk53e55dp0j5fue376le.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBAiftnn4RiEwqEaRFY5U1rvrO1RhOBRpY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "274489186492-orru034g2ai5uk53e55dp0j5fue376le.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:274489186492:android:9883fc44fa591cb3c218b9",
+        "android_client_info": {
+          "package_name": "id.semisama.app.dev"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "274489186492-4kt89v88q4mjdpcgel0cb75t3tfjok38.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "id.semisama.app.dev",
+            "certificate_hash": "0aefce1fd02c9d04a9ea16a1e1e8d85307992887"
+          }
+        },
+        {
+          "client_id": "274489186492-e0b22k7n8tnvqmaeq5slkrhqu7copck1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "id.semisama.app.dev",
+            "certificate_hash": "9bcc0db963dbb8bf2387d72c902a794357c13363"
+          }
+        },
+        {
+          "client_id": "274489186492-orru034g2ai5uk53e55dp0j5fue376le.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBAiftnn4RiEwqEaRFY5U1rvrO1RhOBRpY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "274489186492-orru034g2ai5uk53e55dp0j5fue376le.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:274489186492:android:88fa7fa1974745c5c218b9",
+        "android_client_info": {
+          "package_name": "id.semisamadriver.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "274489186492-0sd735ob90kcc2hp4hiqfui6vkco3d1f.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "id.semisamadriver.app",
+            "certificate_hash": "0aefce1fd02c9d04a9ea16a1e1e8d85307992887"
+          }
+        },
+        {
+          "client_id": "274489186492-op74c6ft56is6bim560785a1opebh3c2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "id.semisamadriver.app",
+            "certificate_hash": "7949b69e6a177b0772a27523c8e5e35603177d09"
+          }
+        },
+        {
+          "client_id": "274489186492-orru034g2ai5uk53e55dp0j5fue376le.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBAiftnn4RiEwqEaRFY5U1rvrO1RhOBRpY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "274489186492-orru034g2ai5uk53e55dp0j5fue376le.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:274489186492:android:7b4aab9fd0edeaa6c218b9",
+        "android_client_info": {
+          "package_name": "id.semisamadriver.app.dev"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "274489186492-vjjbp771lkqffqml86o7ef2ksaljdc99.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "id.semisamadriver.app.dev",
+            "certificate_hash": "0aefce1fd02c9d04a9ea16a1e1e8d85307992887"
+          }
+        },
+        {
+          "client_id": "274489186492-orru034g2ai5uk53e55dp0j5fue376le.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBAiftnn4RiEwqEaRFY5U1rvrO1RhOBRpY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "274489186492-orru034g2ai5uk53e55dp0j5fue376le.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
