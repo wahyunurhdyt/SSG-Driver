@@ -6,5 +6,5 @@ dependencyResolutionManagement {
         maven { url "https://jitpack.io" }
     }
 }
-rootProject.name = "Semi Sama Driver"
+rootProject.name = "Semi Sama Green - Driver"
 include ':app'

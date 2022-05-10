@@ -1,5 +1,5 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <string name="apps_name">Driver Application for Semi Sama Green</string>
+    <string name="apps_name">Semi Sama Green - Driver</string>
     <string name="labelPressOneMore">Tekan sekali lagi untuk keluar</string>
 
     <!-- Navigation -->
