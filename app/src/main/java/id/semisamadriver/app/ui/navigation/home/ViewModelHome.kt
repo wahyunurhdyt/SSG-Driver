@@ -12,6 +12,7 @@ import id.semisamadriver.app.api.manager.ManagerRepository
 import id.semisamadriver.app.ui.product.search.ActivitySearch
 import id.semisamadriver.app.ui.route.allroute.ActivityRoute
 import id.semisamadriver.app.ui.route.manage.ActivityManageRoute
+import java.lang.Exception
 
 class ViewModelHome(
     private val managerRepository: ManagerRepository
@@ -177,10 +178,10 @@ class ViewModelHome(
                 val response = managerRepository.repositoryRoute.getRegionLocation()
                 tempLocation = Location(response?.data?.location?.coordinates!![1], response.data.location.coordinates!![0])
                 getRoutes()
-            } catch (e: ApiException) {
-                bridge?.showSnackbar(e.message)
             } catch (e: ConnectionException) {
                 bridge?.showSnackbarLong(e.message)
+            } catch (e: Exception) {
+                bridge?.showSnackbar(e.message)
             }
             finally {
                 loadingVisibility.postValue(View.GONE)

@@ -1,5 +1,5 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <string name="apps_name">Semi Sama Green - Driver</string>
+    <string name="apps_name">Semarket - Driver</string>
     <string name="labelPressOneMore">Tekan sekali lagi untuk keluar</string>
 
     <!-- Navigation -->
@@ -11,7 +11,7 @@
 
     <!-- Label Auth -->
     <string name="labelLogin">Login</string>
-    <string name="labelLoginDescription">Selamat datang di Semi Sama Green, kami adalah platform yang dibuat agar mempermudah distribusi  sayur-sayuran dari penjual ke konsumen.</string>
+    <string name="labelLoginDescription">Selamat datang di Semarket, kami adalah platform yang dibuat agar mempermudah distribusi  sayur-sayuran dari penjual ke konsumen.</string>
     <string name="labelName">Nama Anda</string>
     <string name="labelPhone">Nomor Telephone</string>
     <string name="labelEmail">Email</string>
@@ -47,7 +47,7 @@
     <!--Home-->
     <string name="labelSearch">Search</string>
     <string name="labelKurirFromSemiSama">Rute Keliling Anda</string>
-    <string name="labelMapsDesc">Maps diatas menampilkan peta tujuan dari kurir Semi Sama Green. Anda dapat mengelola rute anda ataupun mulai keliling.</string>
+    <string name="labelMapsDesc">Maps diatas menampilkan peta tujuan dari kurir Semarket. Anda dapat mengelola rute anda ataupun mulai keliling.</string>
     <string name="labelManage">Kelola</string>
     <string name="labelStartDriving">Mulai Keliling</string>
     <string name="labelStopDriving">Stop Keliling</string>
@@ -163,8 +163,8 @@
 
     <!-- Activity Password -->
     <string-array name="labelDescPassword">
-        <item>Dikarenakan anda login melalui email, anda perlu memasukan password untuk akun Semi Sama Green Anda. Isikan password baru anda dibawah ini.</item>
-        <item>Anda dapat merubah password pada akun Semi Sama Green anda. Isikan password lama anda dan tulis password baru yang anda inginkan.</item>
+        <item>Dikarenakan anda login melalui email, anda perlu memasukan password untuk akun Semarket Anda. Isikan password baru anda dibawah ini.</item>
+        <item>Anda dapat merubah password pada akun Semarket anda. Isikan password lama anda dan tulis password baru yang anda inginkan.</item>
         <item>Kami akan membantu untuk memulihkan kembali akun anda dengan menuliskan email yang terdaftar pada akun anda. Nantinya kami akan mengirimkan kode verifikasi sebagai token untuk mereset password anda.</item>
         <item>Terima kasih sudah melakukan reset password, silahkan tulis ulang dan ingat password anda.</item>
     </string-array>
