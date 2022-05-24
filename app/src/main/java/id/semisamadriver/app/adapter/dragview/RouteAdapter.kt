@@ -15,11 +15,19 @@ import id.semisamadriver.app.api.data.Route
 import kotlinx.android.synthetic.main.item_manage_route.view.*
 import java.util.*
 
-class RouteAdapter(var context: Context, var list: MutableList<Route>, var listener: OnStartDragListener): RecyclerView.Adapter<RouteAdapter.MyViewHolder>(), ItemTouchHelperAdapter {
+class RouteAdapter(
+    var context: Context,
+    var listener: OnStartDragListener
+): RecyclerView.Adapter<RouteAdapter.MyViewHolder>(), ItemTouchHelperAdapter {
 
     private var bridge: Bridge? = null
     fun setBridge(bridge: Bridge) {
         this.bridge = bridge
+    }
+
+    private var list = mutableListOf<Route>()
+    fun setList(list: MutableList<Route>) {
+        this.list = list
     }
 
     inner class MyViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){

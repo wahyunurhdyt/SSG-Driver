@@ -2,15 +2,12 @@ package id.semisamadriver.app.ui.route.manage
 
 import android.os.Bundle
 import android.view.View
-import android.widget.LinearLayout
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.ItemTouchHelper
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
 import id.semisamadriver.app.R
-import id.semisamadriver.app.adapter.dragview.ItemTouchHelperAdapter
 import id.semisamadriver.app.adapter.dragview.MyItemTouchHelperCallback
 import id.semisamadriver.app.adapter.dragview.OnStartDragListener
 import id.semisamadriver.app.adapter.dragview.RouteAdapter
@@ -21,9 +18,7 @@ import id.semisamadriver.app.databinding.ActivityManageRouteBinding
 import id.semisamadriver.app.ui.ViewModelFactoryManageRoute
 import id.semisamadriver.app.utilily.snackbar
 import id.semisamadriver.app.utilily.snackbarLong
-import id.semisamadriver.app.utilily.tempRoutes
 import org.kodein.di.generic.instance
-import javax.security.auth.callback.Callback
 
 class ActivityManageRoute : BaseActivity(), ViewModelManageRoute.Bridge {
 
@@ -38,37 +33,40 @@ class ActivityManageRoute : BaseActivity(), ViewModelManageRoute.Bridge {
     private lateinit var binding: ActivityManageRouteBinding
     private lateinit var viewModel: ViewModelManageRoute
     private val factory: ViewModelFactoryManageRoute by instance()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initBinding()
         initObserver()
     }
 
-    private fun initRecycler(data: MutableList<Route>) {
-        binding.rvRoutes.setHasFixedSize(true)
-        val adapter = RouteAdapter(this, data, object: OnStartDragListener{
-            override fun onStartDrag(viewHolder: RecyclerView.ViewHolder)
-            {
-                itemTouchHelper?.startDrag(viewHolder, )
+    private fun getListAdapter(): RouteAdapter {
+        if (binding.rvRoutes.adapter == null) {
+            binding.rvRoutes.adapter = RouteAdapter(this, object: OnStartDragListener{
+                override fun onStartDrag(viewHolder: RecyclerView.ViewHolder) {
+                    itemTouchHelper?.startDrag(viewHolder)
+                }
+            }).apply {
+                setBridge(object: RouteAdapter.Bridge{
+                    override fun onClickDelete(item: Route, data: MutableList<Route>) {
+                        data.remove(item)
+                        viewModel.updateRoutes(RequestUpdateRoute(data))
+                        setList(data)
+                    }
 
+                    override fun onItemMove(data: MutableList<Route>) {
+                        viewModel.newRoute.postValue(data)
+                        setList(data)
+                    }
+                })
             }
-        })
-        binding.rvRoutes.adapter = adapter
-        val calback = MyItemTouchHelperCallback(adapter)
-        itemTouchHelper = ItemTouchHelper(calback)
-        itemTouchHelper?.attachToRecyclerView(binding.rvRoutes)
-        adapter.setBridge(object: RouteAdapter.Bridge{
-            override fun onClickDelete(item: Route, data: MutableList<Route>) {
-                val list = data
-                list.remove(item)
-                viewModel.updateRoutes(RequestUpdateRoute(list))
-            }
+            binding.rvRoutes.setHasFixedSize(true)
 
-            override fun onItemMove(data: MutableList<Route>) {
-                viewModel.newRoute.postValue(data)
-            }
-
-        })
+            val callback = MyItemTouchHelperCallback(getListAdapter())
+            itemTouchHelper = ItemTouchHelper(callback)
+            itemTouchHelper?.attachToRecyclerView(binding.rvRoutes)
+        }
+        return binding.rvRoutes.adapter as RouteAdapter
     }
 
     private fun initBinding(){
@@ -82,25 +80,25 @@ class ActivityManageRoute : BaseActivity(), ViewModelManageRoute.Bridge {
     private fun initObserver(){
         val owner = this
         viewModel.apply {
-            routes.observe(owner, {
+            routes.observe(owner) {
                 binding.cvMyRoute.visibility = View.VISIBLE
-                if (it.data.size == 0){
+                if (it.data.size == 0) {
                     viewModel.emptyVisibility.postValue(View.VISIBLE)
-                }else{
+                } else {
                     viewModel.emptyVisibility.postValue(View.GONE)
                     routeJson.postValue(Gson().toJson(it.data))
                 }
 
-                initRecycler(it.data)
-            })
-            newRoute.observe(owner,{
+                getListAdapter().setList(it.data)
+            }
+            newRoute.observe(owner) {
                 val newData = Gson().toJson(it)
-                if (newData == routeJson.value){
+                if (newData == routeJson.value) {
                     isButtonEnabled.postValue(false)
-                }else{
+                } else {
                     isButtonEnabled.postValue(true)
                 }
-            })
+            }
         }
     }
 

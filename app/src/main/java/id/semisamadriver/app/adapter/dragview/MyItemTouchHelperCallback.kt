@@ -25,11 +25,11 @@ class MyItemTouchHelperCallback(private val adapter:ItemTouchHelperAdapter) : It
         recyclerView: RecyclerView,
         viewHolder: RecyclerView.ViewHolder
     ): Int {
-        return if (recyclerView.layoutManager is GridLayoutManager){
+        return if (recyclerView.layoutManager is GridLayoutManager) {
             val dragFlags = ItemTouchHelper.UP or ItemTouchHelper.DOWN or ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT
             val swipeFlags = 0
             makeMovementFlags(dragFlags, swipeFlags)
-        }else{
+        } else{
             val dragFlags = ItemTouchHelper.UP or ItemTouchHelper.DOWN
             val swipeFlags = ItemTouchHelper.START or ItemTouchHelper.END
             makeMovementFlags(dragFlags, swipeFlags)
@@ -41,7 +41,7 @@ class MyItemTouchHelperCallback(private val adapter:ItemTouchHelperAdapter) : It
         viewHolder: RecyclerView.ViewHolder,
         target: RecyclerView.ViewHolder
     ): Boolean {
-        if(viewHolder.itemViewType != target.itemViewType){
+        if (viewHolder.itemViewType != target.itemViewType) {
             return false
         }
         adapter.onItemMove(viewHolder.adapterPosition, target.adapterPosition)
@@ -61,26 +61,25 @@ class MyItemTouchHelperCallback(private val adapter:ItemTouchHelperAdapter) : It
         actionState: Int,
         isCurrentlyActive: Boolean
     ) {
-        if (actionState == ItemTouchHelper.ACTION_STATE_SWIPE){
+        if (actionState == ItemTouchHelper.ACTION_STATE_SWIPE) {
             val alpha = ALPHA_FULL - abs(dX) / viewHolder.itemView.width.toFloat()
             viewHolder.itemView.alpha = alpha
             viewHolder.itemView.translationX = dX
-        }else
-        super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
+        } else super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
     }
 
     override fun clearView(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder) {
         super.clearView(recyclerView, viewHolder)
         viewHolder.itemView.alpha = ALPHA_FULL
-        if (viewHolder is ItemTouchHelperViewHolder){
+        if (viewHolder is ItemTouchHelperViewHolder) {
             val itemViewHolder = viewHolder as ItemTouchHelperViewHolder
             itemViewHolder.onItemClear()
         }
     }
 
     override fun onSelectedChanged(viewHolder: RecyclerView.ViewHolder?, actionState: Int) {
-        if (actionState != ItemTouchHelper.ACTION_STATE_IDLE){
-            if (viewHolder is ItemTouchHelperViewHolder){
+        if (actionState != ItemTouchHelper.ACTION_STATE_IDLE) {
+            if (viewHolder is ItemTouchHelperViewHolder) {
                 val itemViewHolder = viewHolder as ItemTouchHelperViewHolder
                 itemViewHolder.onItemSelected()
             }
