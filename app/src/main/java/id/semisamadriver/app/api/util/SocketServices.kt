@@ -150,11 +150,10 @@ class SocketServices: Service() {
                         }
                     }
                     .on(Socket.EVENT_DISCONNECT) {
-                        Log.d("SOCKET_STATUS", "NoT Connect")
+                        Log.d("SOCKET_STATUS", "Not Connect")
                     }
                     .on(Socket.EVENT_CONNECT_ERROR) {
-                        Log.d("SOCKET_STATUS", "Error Connect")
-                        Log.d("SOCKET_STATUS", Gson().toJson(it))
+                        Log.d("SOCKET_STATUS", "Error Connect = ${Gson().toJson(it)}")
                     }
             } catch (e: URISyntaxException) {
                 Log.d("SOCKET_BOY", e.toString())
